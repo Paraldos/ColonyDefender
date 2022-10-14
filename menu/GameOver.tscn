@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://theme/mainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/#Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menu/GameOver.gd" type="Script" id=3]
+[ext_resource path="res://background/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://theme/H1.tres" type="Theme" id=5]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="MC" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = -20.0
+theme = ExtResource( 1 )
+
+[node name="VC" type="VBoxContainer" parent="MC"]
+margin_right = 152.0
+margin_bottom = 108.0
+alignment = 1
+
+[node name="Header" type="Label" parent="MC/VC"]
+margin_top = 20.0
+margin_right = 152.0
+margin_bottom = 33.0
+theme = ExtResource( 5 )
+text = "Game Over!"
+align = 1
+
+[node name="Sep" type="HSeparator" parent="MC/VC"]
+margin_top = 37.0
+margin_right = 152.0
+margin_bottom = 41.0
+
+[node name="Score" type="Label" parent="MC/VC"]
+margin_top = 45.0
+margin_right = 152.0
+margin_bottom = 53.0
+text = "Your Score: xxx"
+align = 1
+
+[node name="Sep2" type="HSeparator" parent="MC/VC"]
+margin_top = 57.0
+margin_right = 152.0
+margin_bottom = 61.0
+
+[node name="BtnRestart" parent="MC/VC" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 65.0
+margin_right = 152.0
+margin_bottom = 74.0
+labelText = "Restart"
+startFocus = true
+
+[node name="BtnQuit" parent="MC/VC" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 78.0
+margin_right = 152.0
+margin_bottom = 87.0
+labelText = "Quit"
+
+[connection signal="pressed" from="MC/VC/BtnRestart" to="." method="_on_BtnRestart_pressed"]
+[connection signal="pressed" from="MC/VC/BtnQuit" to="." method="_on_BtnQuit_pressed"]

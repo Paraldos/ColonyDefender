@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=10 format=2]
+
+[ext_resource path="res://img/Seperator.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+content_margin_top = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+content_margin_top = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=6]
+content_margin_top = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+content_margin_top = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=7]
+content_margin_top = 1.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 3 )
+margin_left = 9.0
+margin_right = 9.0
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://theme/PixelSimpel.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 7
+font_data = SubResource( 1 )
+
+[resource]
+default_font = SubResource( 2 )
+Button/constants/hseparation = 0
+Button/styles/disabled = SubResource( 4 )
+Button/styles/focus = SubResource( 5 )
+Button/styles/hover = SubResource( 6 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 7 )
+HSeparator/styles/separator = SubResource( 8 )

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Player.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Laser_Shoot40.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Explosion100.wav" type="AudioStream" id=4]
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -4 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 1, -4 )
+polygon = PoolVector2Array( -3, 0, -4, 0, -4, 4, 3, 4, 3, 0, 2, 0, 2, -1, 1, -1, 1, -3, -2, -3, -2, -1, -3, -1 )
+
+[node name="AudioAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 20.0
+
+[node name="TimerRespawn" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerAttack" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="TimerRespawn" to="." method="_on_TimerRespawn_timeout"]
